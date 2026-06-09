@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+{% block content %}
+  <header class="site-heading">
+    <h1>Bilbioteka filmów</h1>
+    <p>Witaj w mojej bibliotece filmów!</p>
+  </header>
+
+  <div class="row cards-row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4 mb-5">
+    {% for movie in movies %}
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <img src="{{ movie.poster }}" class="card-img-top" alt="{{ movie.title }}">
+        <div class="card-body">
+          <h5 class="card-title">Film</h5>
+          <p class="card-text">{{ movie.overview }}</p>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{{ url_for('movie_detail', movie_id=movie.id) }}" class="btn btn-primary btn-details">Szczegóły</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}
